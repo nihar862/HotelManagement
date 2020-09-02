@@ -1,0 +1,48 @@
+﻿@model Hotel_Management.Hotel_Data
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h2>Hotel Details ------------------------------------------------------------</h2>
+    <dl class="dl-horizontal" style="font-size:18px">
+        <dt>
+            @Html.DisplayName("Hotel Name:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("City:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ratings:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating) stars
+        </dd>
+
+        </br>
+        <b>Pictures of the Hotel:</b></br>
+        <dd>
+            <img src="@Url.Content(Model.img1)" class="img-rounded" width="250" height="250">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="@Url.Content(Model.img2)" class="img-rounded" width="250" height="250">
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Hotel_Id } , new { @class="btn btn-info"}) |
+    @Html.ActionLink("Hotel List", "Index",null,new { @class="btn btn-primary"})
+</p>

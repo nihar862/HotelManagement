@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Hotel_Management.RoomData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.No_rooms)
+        </th>
+        
+        <th></th>
+    </tr>
+
+ @{ var i = 0;}
+    @foreach (var item in Model)
+    {
+        
+        if (i < 1)
+        {
+            i++;
+           <h2> @Html.DisplayFor(modelItem => item.Hotel_Data.Hotel_name) </h2>
+           <h4>List of Available Rooms in this hotel</h4>
+
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.No_rooms)
+            </td>
+            <td>
+                @if (item.No_rooms != 0)
+                {
+                @Html.ActionLink("Book", "Book", "RoomData", new { id = @item.Room_Id }, new { @class = "btn btn-info", @style = "width:100 px" })
+                }
+                else
+                {
+                <h5 style="color:red;">N/A</h5>
+                }
+            </td>
+            
+            
+        </tr>
+    }
+
+</table>

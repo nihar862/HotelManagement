@@ -1,0 +1,59 @@
+﻿@model Hotel_Management.Hotel_Data
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Hotel Information</h2>
+
+@using (Html.BeginForm(Html.BeginForm("Create", "Hotel_Data", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hotel_name, "Name of Hotel" ,htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hotel_name, new { htmlAttributes = new { @class = "form-control"  } })
+                @Html.ValidationMessageFor(model => model.Hotel_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, "City", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rating, "Ratings", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="file" name="ImageFile1">
+        </div>
+        <div class="form-group">
+            <input type="file" name="ImageFile2">
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Hotel List", "Index" , null , new {@class ="btn btn-info" })
+</div>

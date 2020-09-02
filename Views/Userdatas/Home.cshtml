@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Hotel_Management.Hotel_Data>
+@{
+    ViewBag.Title = "Home";
+}
+
+<div style="text-align : center ; font-family:'Franklin Gothic Medium'">
+
+    <h2>Enter paramters below to Find Hotel</h2>
+
+</div>
+<br />
+<br />
+
+<form class="form-inline text-center" method="get">
+
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Enter Hotel name" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="text" name="search" placeholder="Enter Destination" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="text" name="cat" placeholder="Enter Ratings" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="submit" value="search" class="btn btn-primary">
+    </div>
+</form>
+
+<br />
+<br />
+
+
+@if (Model.Count() == 0)
+{
+    <h4>
+        Item not Found
+    </h4>
+}
+else
+{
+    <h2>Available Hotel Based on your search --------------------------------------------</h2>
+    foreach (var item in Model)
+    {
+        <div>
+
+            <hr />
+            <dl class="dl-horizontal row">
+                <div class="custome2" style="float:left;">
+                <dt style="font-size:22px;">
+                    @Html.DisplayName("Hotel Name :")
+                </dt>
+
+                <dd style="font-size:20px;">
+                    @item.Hotel_name
+                </dd>
+
+                <dt style="font-size:22px;">
+                    @Html.DisplayName("City :")
+                </dt>
+
+                <dd style="font-size:20px;">
+                    @item.City
+                </dd>
+
+                <dt style="font-size:22px;">
+                    @Html.DisplayName("Ratings :")
+                </dt>
+
+                <dd style="font-size:20px;">
+                    @item.Rating
+                </dd></div>
+                <div class="custome" style="float:right;">
+                <dd>
+                    <img src="@Url.Content(item.img1)" class="img-rounded" width="150" height="150">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="@Url.Content(item.img2)" class="img-rounded" width="150" height="150">
+                </dd></div>
+
+            </dl>
+        </div>
+        <br />
+        <br />
+
+        <div>
+            @Html.ActionLink("Book", "Index2", "RoomData", new { id = item.Hotel_Id }, new { @class = "btn btn-info", @style = "width:100 px" })
+        </div>
+    }
+}
+
+
+
+

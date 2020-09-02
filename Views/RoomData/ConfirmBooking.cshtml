@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Hotel_Management.Booking>
+
+@{
+    ViewBag.Title = "MyBookings";
+}
+
+<h2>MyBookings</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Booking_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Userdata.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomData.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomData.Hotel_Data.Hotel_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomData.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                B @Html.DisplayFor(modelItem => item.Booking_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Userdata.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomData.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomData.Hotel_Data.Hotel_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomData.Price)
+            </td>
+            @if (Session["name"].ToString() == "Admin")
+            {
+                if (item.Status == "pending")
+                {
+                    <td>
+                        @Html.ActionLink("Confirm", "Confirm", "RoomData", new { id = item.Booking_Id }, null)
+
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Confirmed
+                    </td>
+                }
+            }
+            <!-- <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Booking_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Booking_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Booking_Id })
+                </td>
+            -->
+        </tr>
+    }
+
+</table>

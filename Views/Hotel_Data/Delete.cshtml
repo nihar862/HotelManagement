@@ -1,0 +1,42 @@
+﻿@model Hotel_Management.Hotel_Data
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to Delete this?</h3>
+<div>
+    <h4>Hotel Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Hotel Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("City")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back", "Index",null, new { @class = " btn btn-success" })
+        </div>
+    }
+</div>

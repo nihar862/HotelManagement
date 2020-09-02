@@ -1,0 +1,57 @@
+﻿@model Hotel_Management.RoomData
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RoomData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.No_rooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No_rooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotel_Data.Hotel_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hotel_Data.Hotel_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Room_Id }) |
+</p>

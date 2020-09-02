@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Hotel_Management.Hotel_Data>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hotel Information</h2>
+
+<p>
+    @Html.ActionLink("Add Hotel", "Create",null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+             @Html.DisplayName("Hotel Name")
+        </th>
+        <th>
+             @Html.DisplayName("City")
+        </th>
+        <th>
+            @Html.DisplayName("Ratings")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotel_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.ActionLink("Room Data", "Index", "RoomData", new { id = item.Hotel_Id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Hotel_Id } ,new { @class="form-group btn btn-success"  } ) 
+            @Html.ActionLink("Details", "Details", new { id=item.Hotel_Id }, new { @class = "form-group btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Hotel_Id }, new { @class = "form-group btn btn-danger" })
+        </td>
+    </tr>
+}
+
+    
+</table>
+
+<p>
+    @Html.ActionLink("User Info", "Index", "Userdatas", null, new { @class = "btn btn-info", @style = "width:100 px" })
+</p>
